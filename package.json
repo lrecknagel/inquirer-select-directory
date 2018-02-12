@@ -1,28 +1,21 @@
 {
-  "name": "inquirer-select-directory",
-  "version": "1.2.0",
-  "description": "A directory prompt for Inquirer.js",
+  "name": "inquirer-select-fs",
+  "version": "1.0.0",
+  "description": "A filesystem prompt for Inquirer.js",
   "main": "src/index.js",
-  "scripts": {
-    "test": "node_modules/.bin/_mocha test/spec",
-    "preversion": "npm test",
-    "postversion": "git push && git push --tags"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/KamiKillertO/inquirer-select-directory.git"
-  },
+  "repository": "git@github.com:lrecknagel/inquirer-select-fs.git",
   "keywords": [
     "Inquirer",
     "directory",
+    "file",
     "prompt"
   ],
-  "author": "JEGARD Benjamin <kamikillerto@gmail.com>",
+  "author": "Lucas Recknagel <lucas91@me.com> | JEGARD Benjamin <kamikillerto@gmail.com>",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/KamiKillertO/inquirer-select-directory/issues"
+    "url": "https://github.com/lrecknagel/inquirer-select-fs/issues"
   },
-  "homepage": "https://github.com/KamiKillertO/inquirer-select-directory#readme",
+  "homepage": "https://github.com/lrecknagel/inquirer-select-fs",
   "dependencies": {
     "chalk": "1.1.1",
     "cli-cursor": "2.0.0",

@@ -70,26 +70,33 @@ function listRender(choices, pointer) {
  * @return {Array}                          array of folder names inside of basePath
  */
 function getDirectoryContent(basePath, displayHidden, displayFiles) {
-    return fs
-        .readdirSync(basePath)
-        .filter(function (file) {
-            try {
-                var stats = fs.lstatSync(path.join(basePath, file));
-                if (stats.isSymbolicLink()) {
-                    return false;
-                }
-                var isDir = stats.isDirectory();
-                var isFile = stats.isFile() && displayFiles;
-                if (displayHidden) {
-                  return isDir || displayFiles;
-                }
-                var isNotDotFile = path.basename(file).indexOf(".") !== 0;
-                return (isDir || isFile) && isNotDotFile;
-            } catch (error) {
-                return false;
+  try {
+    if (fs.lstatSync(basePath).isDirectory()) {
+      return fs.
+        readdirSync(basePath).
+        filter(function (file) {
+          try {
+            var stats = fs.lstatSync(path.join(basePath, file));
+            if (stats.isSymbolicLink()) {
+              return false;
             }
-        })
-        .sort();
+            var isDir = stats.isDirectory();
+            var isFile = stats.isFile() && displayFiles;
+            if (displayHidden) {
+              return isDir || displayFiles;
+            }
+            var isNotDotFile = path.basename(file).indexOf(".") !== 0;
+            return (isDir || isFile) && isNotDotFile;
+          } catch (error) {
+            return false;
+          }
+        }).sort();
+    } else {
+      return [basePath];
+    }
+  } catch (e) {
+    console.error(e);
+  }
 }
 
 function updateChoices(choices, basePath) {
